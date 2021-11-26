@@ -1,6 +1,6 @@
 type Query {
   info: String!
-  auditions: [Audition!]!
+  auditions(filter: String): [Audition!]!
 }
 
 type Mutation {
