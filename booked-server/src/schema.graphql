@@ -1,6 +1,6 @@
 type Query {
   info: String!
-  auditions(filter: String): [Audition!]!
+  auditions(filter: String, orderBy: AuditionOrderByInput): [Audition!]!
 }
 
 type Mutation {
@@ -30,4 +30,15 @@ type AuthPayload {
 
 type Subscription {
   newAudition: Audition
+}
+
+input AuditionOrderByInput {
+  description: Sort
+  location: Sort
+  createdAt: Sort
+}
+
+enum Sort {
+  asc
+  desc
 }

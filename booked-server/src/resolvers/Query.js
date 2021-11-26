@@ -8,11 +8,12 @@ async function auditions(parent, args, context, info) {
       }
       : {}
   
-    const links = await context.prisma.audition.findMany({
+    const auditions = await context.prisma.audition.findMany({
       where,
+      orderBy: args.orderBy,
     })
   
-    return links
+    return auditions
   }
 
 module.exports = {
