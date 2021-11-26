@@ -12,8 +12,12 @@ async function auditions(parent, args, context, info) {
       where,
       orderBy: args.orderBy,
     })
+    const count = await context.prisma.audition.count({ where })
   
-    return auditions
+    return {
+        auditions,
+        count
+    }
   }
 
 module.exports = {

@@ -1,6 +1,11 @@
 type Query {
   info: String!
-  auditions(filter: String, orderBy: AuditionOrderByInput): [Audition!]!
+  auditions(filter: String, orderBy: AuditionOrderByInput): Auditions!
+}
+
+type Auditions {
+  auditions: [Audition!]!
+  count: Int!
 }
 
 type Mutation {
