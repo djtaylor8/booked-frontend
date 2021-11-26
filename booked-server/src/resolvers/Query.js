@@ -1,4 +1,4 @@
-async function auditions(parent, args, context, info) {
+async function feed(parent, args, context, info) {
     const where = args.filter
       ? {
         OR: [
@@ -15,11 +15,12 @@ async function auditions(parent, args, context, info) {
     const count = await context.prisma.audition.count({ where })
   
     return {
+        id: 'main-feed',
         auditions,
         count
     }
   }
 
 module.exports = {
-    auditions
+    feed
 }

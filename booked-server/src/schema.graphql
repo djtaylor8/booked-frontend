@@ -1,9 +1,10 @@
 type Query {
   info: String!
-  auditions(filter: String, orderBy: AuditionOrderByInput): Auditions!
+  feed(filter: String, orderBy: AuditionOrderByInput): Feed!
 }
 
-type Auditions {
+type Feed {
+  id: ID!
   auditions: [Audition!]!
   count: Int!
 }

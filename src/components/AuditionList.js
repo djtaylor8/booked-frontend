@@ -1,26 +1,34 @@
 import React from 'react';
 import Audition from './Audition'
+import { useQuery, gql } from '@apollo/client';
+
+const AUDITIONS_QUERY = gql`
+    {
+        auditions {
+            id {
+                auditions {
+                    id
+                    createdAt
+                    location
+                    description
+                }
+            }
+        }
+    }
+`;
 
 const AuditionList = () => {
-    const auditionsToRender = [
-      {
-        id: '1',
-        description:
-          'Big audition test 1',
-        location: 'My living room'
-      },
-      {
-        id: '2',
-        description: 'Jailbreak',
-        location: 'Green Casting'
-      }
-    ]
+    const { data } = useQuery(AUDITIONS_QUERY);
+
     return (
         <div>
-            {auditionsToRender.map((audition) => (
-                <Audition key={audition.id} audition={audition} />
-            ))}
-            
+            {data && (
+                <>
+                {data.auditions.auditions.map((audition) => (
+                    <Audition key={audition.id} audition={audition} />
+                ))}
+                </>
+            )}
         </div>
     );
 };
