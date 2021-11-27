@@ -2,6 +2,7 @@ import React from 'react';
 import CreateAudition from './CreateAudition';
 import Header from './Header';
 import AuditionList from './AuditionList';
+import Login from './Login';
 import { Route, Routes } from 'react-router-dom';
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
             path="/create"
             element={<CreateAudition />}
           />
+          <Route exact path="/login" element={<Login />} />
         </Routes>
       </div>
     </div>
