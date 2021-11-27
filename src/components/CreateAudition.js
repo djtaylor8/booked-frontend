@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
+
 
 const CREATE_AUDITION_MUTATION = gql`
   mutation PostAudition(
@@ -17,7 +19,7 @@ const CREATE_AUDITION_MUTATION = gql`
 
 
 const CreateAudition = () => {
-
+  const navigate = useNavigate();
   const [formState, setFormState] = useState({
     description: '',
     location: ''
@@ -27,7 +29,8 @@ const CreateAudition = () => {
     variables: {
         description: formState.description,
         location: formState.location,
-      }
+      },
+      onCompleted: () => navigate('/')
     });
 
   return (
