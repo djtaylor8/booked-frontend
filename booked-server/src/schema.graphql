@@ -27,6 +27,7 @@ type Audition {
   description: String!
   location: String!
   createdBy: User
+  createdAt: DateTime!
 }
 
 type AuthPayload {
@@ -48,3 +49,5 @@ enum Sort {
   asc
   desc
 }
+
+scalar DateTime
